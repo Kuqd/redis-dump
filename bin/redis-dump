@@ -71,7 +71,6 @@ class Redis::Dump::CLI
   usage "redis-dump -d 15 -c 100_000 > dumpfile_db15.json"
   command :dump do |obj|
     rd = Redis::Dump.new obj.global.database, obj.global.uri
-    obj.global.filter &&= '*%s*' % obj.global.filter
     Redis::Dump.ld " filter #{obj.global.filter}"
     rd.dump(obj.global.filter) do |records|
       puts records
